@@ -26,6 +26,28 @@ public class Utilisateurs {
     @Column(name = "PasswordUtilisateurs")
     private String password;
 
+    @Column(name = "TokenUtilisateur")
+    private String token;
+
+    @Column(name = "InscriptionConfirmUtilisateur")
+    private Boolean inscriptionComfirme;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Boolean getInscriptionComfirme() {
+        return inscriptionComfirme;
+    }
+
+    public void setInscriptionComfirme(Boolean inscriptionComfirme) {
+        this.inscriptionComfirme = inscriptionComfirme;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -65,5 +87,14 @@ public class Utilisateurs {
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
 }
