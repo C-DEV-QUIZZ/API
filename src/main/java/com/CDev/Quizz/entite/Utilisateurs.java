@@ -9,17 +9,61 @@ public class Utilisateurs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdUtilisateurs")
-    public Integer id;
+    private Integer id;
 
     @Column(name = "NomUtilisateurs")
-    public String nom;
+    private String nom;
 
     @Column(name = "PrenomUtilisateurs")
-    public String prenom;
+    private String prenom;
 
     @Column(name = "EmailUtilisateurs")
-    public String email;
+    private String email;
 
     @Column(name = "PseudoUtilisateurs")
-    public String pseudo;
+    private String pseudo;
+
+    @Column(name = "PasswordUtilisateurs")
+    private String password;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
 }
