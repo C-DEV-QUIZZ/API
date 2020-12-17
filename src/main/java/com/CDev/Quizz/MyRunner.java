@@ -16,11 +16,11 @@ public class MyRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<Utilisateurs> utilisateursList =  utilisateursRepository.findAll();
-
-
-        for(Utilisateurs users : utilisateursList)
-            System.out.println(users.nom);
+//        List<Utilisateurs> utilisateursList =  utilisateursRepository.findAll();
+//
+//
+//        for(Utilisateurs users : utilisateursList)
+//            System.out.println(users.getNom());
     }
 
 
