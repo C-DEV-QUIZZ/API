@@ -81,11 +81,13 @@ public class UtilisateursController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST,consumes=
-            MediaType.TEXT_PLAIN_VALUE, value = "/confirmationInscription")
-    public String getConfirmInscription(@RequestBody() String token) {
+    @RequestMapping(method = RequestMethod.POST,produces=
+            MediaType.APPLICATION_JSON_VALUE, value = "/confirmationInscription")
+    public String getConfirmInscription(@RequestBody String token) {
         // Grace a text.plain value on récupère la token
         // mais sans l'url formatage !
+
+        System.out.println(token);
 
         String tokenDecrypt = Encrypte.decrypt(token);
 
@@ -94,14 +96,13 @@ public class UtilisateursController {
         if(utilisateursOptional.isEmpty())
             throw new EntityNotFoundException("L'utilisateur n'as pas été trouvé");
 
-//        if(utilisateursOptional.get().getInscriptionComfirme()!=null)
-//            throw new EntityNotFoundException("Le compte est déjà activé");
+        if(utilisateursOptional.get().getInscriptionComfirme()!=null)
+            throw new EntityNotFoundException("Le compte est déjà activé");
 
         Utilisateurs users = utilisateursOptional.get();
         users.setInscriptionComfirme(true);
         utilisateursRepository.save(users);
-
-        return "true";
+        return "Inscription confirmé !";
     }
 
 
@@ -125,7 +126,7 @@ public class UtilisateursController {
             throw new IllegalArgumentException("Login ou mots de passe incorrect ...");
 
         // crypte la token et la rend sans format url:
-        String token = "abcdefgh";
+        String token = Encrypte.encrypt(utilisateursOptional.get().getToken());
 
         String JsonString = "{\"token\": \""+ token +"\","+
                 "\"nom\": \""+ utilisateursOptional.get().getNom().toUpperCase() +"\","+

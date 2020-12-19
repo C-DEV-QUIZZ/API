@@ -30,6 +30,21 @@ public class EmailServiceImpl {
         return true;
     }
 
+    public Boolean sendInscriptionMailAdministrateur(String to,String tokenEncrypt, String prenomUser,
+                                             JavaMailSender javaMail) {
+        System.out.println("Envoi mail inscription en cours...");
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(stringConstante.mailAdresseFrom);
+        message.setTo(to);
+        message.setSubject("Inscription QUIZZ MESI");
+        message.setText(
+                stringConstante.getMessageInscriptionAdministrattion(prenomUser,tokenEncrypt)
+        );
+        javaMail.send(message);
+        System.out.println("Email envoye!");
+        return true;
+    }
+
     public Boolean sendSimpleMessage(String to, String subject, String text, JavaMailSender javaMail) {
         System.out.println("Envoi mail en cours...");
         SimpleMailMessage message = new SimpleMailMessage();
