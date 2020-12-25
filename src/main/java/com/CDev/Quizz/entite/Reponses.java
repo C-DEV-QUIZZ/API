@@ -15,7 +15,7 @@ public class Reponses {
 
 
     @Column(name = "TexteReponses")
-    private String textes;
+    private String texte;
 
 
     @ManyToOne
@@ -31,12 +31,12 @@ public class Reponses {
         this.id = id;
     }
 
-    public String getTextes() {
-        return textes;
+    public String getTexte() {
+        return texte;
     }
 
-    public void setTextes(String textes) {
-        this.textes = textes;
+    public void setTexte(String texte) {
+        this.texte = texte;
     }
 
     public Questions getQuestion() {

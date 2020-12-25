@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.List;
 
 @RestController
@@ -18,10 +21,13 @@ public class QuestionsController {
     QuestionsRepository questionsRepository;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getall",produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Questions> getAllQuestions(){
+    public List<Questions> getAllQuestions(HttpServletRequest request){
         // TODO implementer un système de vérification pour voir si
         // le demandeur est bien un administrateur
-
+        System.out.println(request.getRemoteUser());
+        System.out.println(request.getRemoteAddr());
+        System.out.println(request.getRemoteHost());
+        System.out.println(request.getRemotePort());
         return questionsRepository.findAll();
 
     }
