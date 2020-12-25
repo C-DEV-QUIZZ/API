@@ -1,5 +1,7 @@
 package com.CDev.Quizz.entite;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class Reponses {
 
 
     @ManyToOne
+    @JsonIgnoreProperties("reponses")
     @JoinColumn( name = "Fk_IdQuestions" )
     private Questions question;
 

@@ -19,19 +19,19 @@ public class MyRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Questions questions = questionsRepository.findById(1).get();
-
-        System.out.println("question de difficultés : "  + questions.getDifficultes().getNom());
-        System.out.println(questions.getTexte()+ "?");
-
-        Integer idBonneReponse=  questions.getBonneReponse().getId();
-
-        for (Reponses reponses: questions.getReponses()) {
-            if(idBonneReponse == reponses.getId())
-                System.out.println(String.format("* %s *", reponses.getTextes()));
-            else
-                System.out.println(reponses.getTextes());
-        }
+//        Questions questions = questionsRepository.findById(1).get();
+//
+//        System.out.println("question de difficultés : "  + questions.getDifficultes().getNom());
+//        System.out.println(questions.getTexte()+ "?");
+//
+//        Integer idBonneReponse=  questions.getBonneReponse().getId();
+//
+//        for (Reponses reponses: questions.getReponses()) {
+//            if(idBonneReponse == reponses.getId())
+//                System.out.println(String.format("* %s *", reponses.getTextes()));
+//            else
+//                System.out.println(reponses.getTextes());
+//        }
     }
 
 

@@ -1,6 +1,7 @@
 package com.CDev.Quizz.entite;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
@@ -24,10 +25,11 @@ public class Questions {
 
 
     @OneToOne()
+    @JsonIgnoreProperties("question")
     @JoinColumn(name = "Fk_IdBonneReponses", nullable = false)
     private Reponses bonneReponse;
 
-
+    @JsonIgnoreProperties("question")
     @OneToMany(mappedBy = "question",fetch = FetchType.EAGER)
     private List<Reponses> reponses;
 
