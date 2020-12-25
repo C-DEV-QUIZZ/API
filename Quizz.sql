@@ -1,7 +1,7 @@
 --
--- Fichier g�n�r� par SQLiteStudio v3.2.1 sur jeu. d�c. 24 13:43:39 2020
+-- Fichier généré par SQLiteStudio v3.2.1 sur ven. déc. 25 20:29:33 2020
 --
--- Encodage texte utilis� : System
+-- Encodage texte utilisé : UTF-8
 --
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
@@ -22,10 +22,10 @@ INSERT INTO Parametres (IdParametres, NomSystemeParametres, ModeInscriptionParam
 
 -- Table : Questions
 CREATE TABLE Questions (IdQuestions INTEGER PRIMARY KEY AUTOINCREMENT, TexteQuestions VARCHAR UNIQUE NOT NULL, Fk_IdDifficultes INTEGER NOT NULL REFERENCES Difficultes (IdDifficultes), PointsQuestions INTEGER NOT NULL, Fk_IdBonneReponses INTEGER REFERENCES Reponses (IdReponses) ON DELETE CASCADE NOT NULL);
-INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (1, 'Dans quel pays peut-on trouver la Catalogne, l�Andalousie et la Castille ', 2, 8, 2);
-INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (2, 'Qui a dit : � Le sort en est jet� � (Alea jacta est)', 2, 7, 6);
-INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (3, 'Quel c�l�bre dictateur dirigea l�URSS du milieu des ann�es 1920 � 1953', 2, 9, 12);
-INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (4, 'Quelle ville a construit le premier m�tro', 3, 12, 15);
+INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (1, 'Dans quel pays peut-on trouver la Catalogne, l’Andalousie et la Castille', 2, 8, 2);
+INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (2, 'Qui a dit : « Le sort en est jeté » (Alea jacta est)', 2, 7, 6);
+INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (3, 'Quel célèbre dictateur dirigea l’URSS du milieu des années 1920 à 1953', 2, 9, 12);
+INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (4, 'Quelle ville a construit le premier métro', 3, 12, 15);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (5, 'De quoi se nourrit le manchot', 1, 2, 17);
 
 -- Table : Reponses
@@ -36,15 +36,15 @@ INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (3, 'La 
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (4, 'Le Portugal', 1);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (5, 'La corse
 ', 1);
-INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (6, 'C�sar', 2);
+INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (6, 'César', 2);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (7, 'Attila', 2);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (8, 'Auguste', 2);
-INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (9, 'Vercing�torix', 2);
+INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (9, 'Vercingétorix', 2);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (10, 'Trotski', 3);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (11, 'Molotov', 3);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (12, 'Staline', 3);
-INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (13, 'L�nine', 3);
-INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (14, 'P�kin', 3);
+INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (13, 'Lénine', 3);
+INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (14, 'Pékin', 3);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (15, 'Londres', 4);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (16, 'De crevette', 5);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (17, 'De plancton', 5);
@@ -59,5 +59,3 @@ INSERT INTO Utilisateurs (IdUtilisateurs, NomUtilisateurs, PrenomUtilisateurs, E
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
-
-.save Quizz.db
