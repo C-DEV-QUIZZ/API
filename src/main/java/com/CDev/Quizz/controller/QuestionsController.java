@@ -44,6 +44,8 @@ public class QuestionsController {
     @PostMapping(value = "create",produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void createQuestion(@RequestParam("question") String question,
                                @RequestParam("difficulte") String difficulte,
+                               @RequestParam("points") Integer points,
+                               @RequestParam("bonneReponse") Integer bonneReponse,
                                @RequestParam("reponses") String[] reponsesArray){
 
         // creer la nouvelle question a save
@@ -67,10 +69,11 @@ public class QuestionsController {
         questions.setReponses(reponsesList);                // Ajoute toutes les réponses a la question
         questions.setBonneReponse(reponsesList.get(0));     // Ajoute la bonne réponse a la question
 
-        questionsRepository.save(questions);                // save la question et son ensemble ( réponse / bonne
-        // réponse ) voir entite et les relations.
+        // save la question et son ensemble ( réponse / bonneréponse )
+        // voir entite et les relations.
+        questionsRepository.save(questions);
 
-//        reponsesRepository.saveAll(reponsesList);
+        reponsesRepository.saveAll(reponsesList);
 
         System.out.println(question);
 
