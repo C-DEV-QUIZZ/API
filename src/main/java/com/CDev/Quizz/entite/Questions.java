@@ -27,7 +27,7 @@ public class Questions {
 
     // grace a referencedColumnName on fait le lien pour enregistrer l'id de la bonne réponse dans
     // table question
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnoreProperties("question")
     @JoinColumn(name = "Fk_IdBonneReponses" , referencedColumnName = "IdReponses") //  nullable = false)
     private Reponses bonneReponse;

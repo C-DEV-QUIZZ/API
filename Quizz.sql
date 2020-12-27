@@ -59,3 +59,5 @@ INSERT INTO Utilisateurs (IdUtilisateurs, NomUtilisateurs, PrenomUtilisateurs, E
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
+
+.save quizz.db
