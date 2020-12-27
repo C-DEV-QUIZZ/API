@@ -2,6 +2,7 @@ package com.CDev.Quizz.entite;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
@@ -24,17 +25,23 @@ public class Questions {
     private Integer points;
 
 
+    // grace a referencedColumnName on fait le lien pour enregistrer l'id de la bonne réponse dans
+    // table question
     @OneToOne()
     @JsonIgnoreProperties("question")
-    @JoinColumn(name = "Fk_IdBonneReponses", nullable = false)
+    @JoinColumn(name = "Fk_IdBonneReponses" , referencedColumnName = "IdReponses") //  nullable = false)
     private Reponses bonneReponse;
 
+    // grace a JsonManagedReference  et à cascade = CascadeType.ALL
+    // on peut lors de l'enregistre d'une question, save les
+    // réponses prénsent dans l'objet question.
+    @JsonManagedReference
     @JsonIgnoreProperties("question")
-    @OneToMany(mappedBy = "question",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "question",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Reponses> reponses;
 
     @OneToOne()
-    @JoinColumn(name = "Fk_IdDifficultes", nullable = false)
+    @JoinColumn(name = "Fk_IdDifficultes")
     private Difficultes difficultes;
 
 

@@ -1,5 +1,6 @@
 package com.CDev.Quizz.entite;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -17,10 +18,13 @@ public class Reponses {
     @Column(name = "TexteReponses")
     private String texte;
 
-
-    @ManyToOne
+    // grace a JsonBackReference et à cascade = CascadeType.ALL
+    // on peut lors de l'enregistre d'une question, save les
+    // réponses prénsent dans l'objet question.
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnoreProperties("reponses")
-    @JoinColumn( name = "Fk_IdQuestions" )
+    @JoinColumn( name = "Fk_IdQuestions" ,referencedColumnName="IdQuestions")
     private Questions question;
 
     public Integer getId() {
