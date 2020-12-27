@@ -1,5 +1,5 @@
 --
--- Fichier généré par SQLiteStudio v3.2.1 sur ven. déc. 25 20:29:33 2020
+-- Fichier généré par SQLiteStudio v3.2.1 sur dim. déc. 27 20:09:28 2020
 --
 -- Encodage texte utilisé : UTF-8
 --
@@ -21,7 +21,7 @@ CREATE TABLE Parametres (IdParametres INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
 INSERT INTO Parametres (IdParametres, NomSystemeParametres, ModeInscriptionParametres) VALUES (1, 'Site Admin', 1);
 
 -- Table : Questions
-CREATE TABLE Questions (IdQuestions INTEGER PRIMARY KEY AUTOINCREMENT, TexteQuestions VARCHAR UNIQUE NOT NULL, Fk_IdDifficultes INTEGER NOT NULL REFERENCES Difficultes (IdDifficultes), PointsQuestions INTEGER NOT NULL, Fk_IdBonneReponses INTEGER REFERENCES Reponses (IdReponses) ON DELETE CASCADE NOT NULL);
+CREATE TABLE Questions (IdQuestions INTEGER PRIMARY KEY AUTOINCREMENT, TexteQuestions VARCHAR UNIQUE NOT NULL, Fk_IdDifficultes INTEGER REFERENCES Difficultes (IdDifficultes) NOT NULL, PointsQuestions INTEGER NOT NULL, Fk_IdBonneReponses INTEGER REFERENCES Reponses (IdReponses) ON DELETE CASCADE NOT NULL);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (1, 'Dans quel pays peut-on trouver la Catalogne, l’Andalousie et la Castille', 2, 8, 2);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (2, 'Qui a dit : « Le sort en est jeté » (Alea jacta est)', 2, 7, 6);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (3, 'Quel célèbre dictateur dirigea l’URSS du milieu des années 1920 à 1953', 2, 9, 12);
@@ -29,7 +29,7 @@ INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQues
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (5, 'De quoi se nourrit le manchot', 1, 2, 17);
 
 -- Table : Reponses
-CREATE TABLE Reponses (IdReponses INTEGER PRIMARY KEY AUTOINCREMENT, TexteReponses VARCHAR NOT NULL, Fk_IdQuestions INTEGER REFERENCES Questions (IdQuestions));
+CREATE TABLE Reponses (IdReponses INTEGER PRIMARY KEY AUTOINCREMENT, TexteReponses VARCHAR NOT NULL, Fk_IdQuestions INTEGER REFERENCES Questions (IdQuestions) ON DELETE CASCADE);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (1, 'L''Italie ', 1);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (2, 'L''Espagne', 1);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (3, 'La France ', 1);
@@ -59,5 +59,3 @@ INSERT INTO Utilisateurs (IdUtilisateurs, NomUtilisateurs, PrenomUtilisateurs, E
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
-
-.save quizz.db
