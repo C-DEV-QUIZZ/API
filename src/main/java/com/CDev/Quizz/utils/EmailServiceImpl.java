@@ -15,25 +15,31 @@ import javax.mail.internet.MimeMessage;
 @Component
 public class EmailServiceImpl {
 
-    public String msgFrom ="ff-dev@outlook.fr";
 
     public Boolean sendInscriptionMail(String to,String tokenEncrypt, String prenomUser, JavaMailSender javaMail) {
         System.out.println("Envoi mail inscription en cours...");
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(msgFrom);
+        message.setFrom(stringConstante.mailAdresseFrom);
         message.setTo(to);
-        message.setSubject("Inscription GTA LIFE");
+        message.setSubject("Inscription QUIZZ MESI");
         message.setText(
-                "Bonjour et Bienvenue " + prenomUser +" ! \n\n" +
-                        "Nous te souhaitons la bienvenue dans le serveur !\n\n" +
-                        "Nous espérons que tu t'amuseras comme il se doit. Avant toutes choses tu va devoir confirmer ton inscription" +
-                        "en cliquant sur ce lien :\n\n\t" +
-                        "http://localhost:4200/confirmationInscription?T1kAfwA78ar="+ tokenEncrypt +"\n\n\n" +
-                        "Une fois cela fais, tu pourras te connecter à ton compte !\n\n" +
-                        "Cdlt\n\n\n" +
-                        "L'équipe de GTA LIFE"
+                stringConstante.getMessageInscription(prenomUser,tokenEncrypt)
         );
+        javaMail.send(message);
+        System.out.println("Email envoye!");
+        return true;
+    }
 
+    public Boolean sendInscriptionMailAdministrateur(String to,String tokenEncrypt, String prenomUser,
+                                             JavaMailSender javaMail) {
+        System.out.println("Envoi mail inscription en cours...");
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(stringConstante.mailAdresseFrom);
+        message.setTo(to);
+        message.setSubject("Inscription QUIZZ MESI");
+        message.setText(
+                stringConstante.getMessageInscriptionAdministrattion(prenomUser,tokenEncrypt)
+        );
         javaMail.send(message);
         System.out.println("Email envoye!");
         return true;
@@ -42,7 +48,7 @@ public class EmailServiceImpl {
     public Boolean sendSimpleMessage(String to, String subject, String text, JavaMailSender javaMail) {
         System.out.println("Envoi mail en cours...");
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(msgFrom);
+        message.setFrom(stringConstante.mailAdresseFrom);
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
@@ -57,7 +63,7 @@ public class EmailServiceImpl {
         MimeMessageHelper helper;
         helper = new MimeMessageHelper(message, true);//true indicates multipart message
 
-        helper.setFrom(msgFrom); // <--- THIS IS IMPORTANT
+        helper.setFrom(stringConstante.mailAdresseFrom); // <--- THIS IS IMPORTANT
 
         helper.setSubject(subject);
         helper.setTo(to);

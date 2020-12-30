@@ -1,44 +1,37 @@
 package com.CDev.Quizz.entite;
 
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Utilisateurs")
-public class Utilisateurs {
+@Table(name = "Administrateurs")
+public class Administrateurs {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdUtilisateurs")
+    @Column(name = "IdAdministrateurs")
     private Integer id;
 
-    @Column(name = "NomUtilisateurs")
+    @Column(name = "NomAdministrateurs")
     private String nom;
 
-    @Column(name = "PrenomUtilisateurs")
+    @Column(name = "PrenomAdministrateurs")
     private String prenom;
 
-    @Column(name = "EmailUtilisateurs")
+    @Column(name = "EmailAdministrateurs")
     private String email;
 
-    @Column(name = "PseudoUtilisateurs")
+    @Column(name = "PseudoAdministrateurs")
     private String pseudo;
 
-    @Column(name = "PasswordUtilisateurs")
+    @Column(name = "PasswordAdministrateurs")
     private String password;
 
-    @Column(name = "TokenUtilisateurs")
+    @Column(name = "TokenAdministrateurs")
     private String token;
 
-    @Column(name = "InscriptionConfirmUtilisateurs")
+    @Column(name = "InscriptionConfirmAdministrateurs")
     private Boolean inscriptionComfirme;
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     public Boolean getInscriptionComfirme() {
         return inscriptionComfirme;
@@ -96,5 +89,11 @@ public class Utilisateurs {
         this.password = password;
     }
 
+    public String getToken() {
+        return token;
+    }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
 }
