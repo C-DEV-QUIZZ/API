@@ -7,6 +7,7 @@ import com.CDev.Quizz.repository.DifficultesRepository;
 import com.CDev.Quizz.repository.QuestionsRepository;
 import com.CDev.Quizz.repository.ReponsesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,11 +34,11 @@ public class QuestionsController {
     public List<Questions> getAllQuestions(HttpServletRequest request){
         // TODO implementer un système de vérification pour voir si
         // le demandeur est bien un administrateur
-        System.out.println(request.getRemoteUser());
-        System.out.println(request.getRemoteAddr());
-        System.out.println(request.getRemoteHost());
-        System.out.println(request.getRemotePort());
-        return questionsRepository.findAll();
+//        System.out.println(request.getRemoteUser());
+//        System.out.println(request.getRemoteAddr());
+//        System.out.println(request.getRemoteHost());
+//        System.out.println(request.getRemotePort());
+        return questionsRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
 
