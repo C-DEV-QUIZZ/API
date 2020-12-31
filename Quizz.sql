@@ -8,7 +8,7 @@ BEGIN TRANSACTION;
 
 -- Table : Administrateurs
 CREATE TABLE Administrateurs (IdAdministrateurs INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NomAdministrateurs VARCHAR NOT NULL, PrenomAdministrateurs VARCHAR NOT NULL, EmailAdministrateurs VARCHAR NOT NULL, PseudoAdministrateurs VARCHAR, PasswordAdministrateurs VARCHAR NOT NULL, TokenAdministrateurs VARCHAR NOT NULL, InscriptionConfirmAdministrateurs BOOLEAN);
-INSERT INTO Administrateurs (IdAdministrateurs, NomAdministrateurs, PrenomAdministrateurs, EmailAdministrateurs, PseudoAdministrateurs, PasswordAdministrateurs, TokenAdministrateurs, InscriptionConfirmAdministrateurs) VALUES (2, 'ferrere', 'fabrice', 'bafdu69@hotmail.fr', NULL, '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'OOBWRFEN2V6B1608334797545RIZXGFAT389U', 1);
+INSERT INTO Administrateurs (IdAdministrateurs, NomAdministrateurs, PrenomAdministrateurs, EmailAdministrateurs, PseudoAdministrateurs, PasswordAdministrateurs, TokenAdministrateurs, InscriptionConfirmAdministrateurs) VALUES (1, 'ferrere', 'fabrice', 'bafdu69@hotmail.fr', NULL, '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'OOBWRFEN2V6B1608334797545RIZXGFAT389U', 1);
 
 -- Table : Difficultes
 CREATE TABLE Difficultes (IdDifficultes INTEGER PRIMARY KEY AUTOINCREMENT, NomDifficultes VARCHAR NOT NULL);
@@ -59,3 +59,5 @@ INSERT INTO Utilisateurs (IdUtilisateurs, NomUtilisateurs, PrenomUtilisateurs, E
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
+
+.save Quizz.db
