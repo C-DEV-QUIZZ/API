@@ -121,17 +121,20 @@ public class AdministrateursController {
         if (administrateursOptional.isEmpty())
             throw new IllegalArgumentException("Login ou mots de passe incorrect ...");
 
-            if (administrateursOptional.get().getInscriptionComfirme()!=true)
+            if (administrateursOptional.get().getInscriptionComfirme()==null)
+            {
+                // crypte la token et la rend sans format url:
+                String token = Encrypte.encrypt(administrateursOptional.get().getToken());
+
+                String JsonString = "{\"token\": \""+ token +"\","+
+                        "\"nom\": \""+ administrateursOptional.get().getNom().toUpperCase() +"\","+
+                        "\"prenom\": \""+ administrateursOptional.get().getPrenom() +"\"}";
+
+                return  JsonString;
+            }
+            else
                 throw new IllegalArgumentException("Vous n'avez pas confirmé votre compte...");
 
-        // crypte la token et la rend sans format url:
-        String token = Encrypte.encrypt(administrateursOptional.get().getToken());
-
-        String JsonString = "{\"token\": \""+ token +"\","+
-                "\"nom\": \""+ administrateursOptional.get().getNom().toUpperCase() +"\","+
-                "\"prenom\": \""+ administrateursOptional.get().getPrenom() +"\"}";
-
-        return  JsonString;
     }
 
 
