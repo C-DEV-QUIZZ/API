@@ -105,6 +105,7 @@ public class AdministrateursController {
     public String connexionAdministrateur(@RequestBody Administrateurs administrateurs){
 
 
+
         // vérifie si le nom  ou le password envoyé par l'user est vide:
         if(administrateurs.getEmail().isBlank() || administrateurs.getPassword().isBlank())
             throw new IllegalArgumentException("Le mots de passe ou l'adresse mail est vide");
@@ -119,6 +120,9 @@ public class AdministrateursController {
 
         if (administrateursOptional.isEmpty())
             throw new IllegalArgumentException("Login ou mots de passe incorrect ...");
+
+            if (administrateursOptional.get().getInscriptionComfirme()!=true)
+                throw new IllegalArgumentException("Vous n'avez pas confirmé votre compte...");
 
         // crypte la token et la rend sans format url:
         String token = Encrypte.encrypt(administrateursOptional.get().getToken());
