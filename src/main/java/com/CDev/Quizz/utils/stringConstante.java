@@ -6,10 +6,10 @@ public class stringConstante {
     public final static String IpAdresseLocal= "http://localhost:4200/";
 
     // adresse du site public quizz pour la confirmation d'adresse:
-    public final static String IpAdresseDistant="https://quizzAdmins.servehttp.com/";
+    public final static String IpAdresseDistant="https://siteadminquizz.servehttp.com/";
 
     // adresse du site administration pour la confirmation paar mail:
-    public final static String IpAdresseDistantAdministration="https://quizzAdmins.servehttp.com/";
+    public final static String IpAdresseDistantAdministration="https://siteadminquizz.servehttp.com/";
 
     // serveur mail:
     public final static String mailAdresseFrom="quizz-mesi@outlook.fr";
