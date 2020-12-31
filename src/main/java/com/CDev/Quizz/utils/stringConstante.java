@@ -27,7 +27,7 @@ public class stringConstante {
                 "Nous te souhaitons la bienvenue sur "+ NAME_APPLICATION +"\n\n" +
                 "Nous espérons que tu t'amuseras comme il se doit. Avant toutes choses tu va devoir confirmer ton inscription" +
                 "en cliquant sur ce lien :\n\n\t" +
-                IpAdresseLocal +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
+                IpAdresseDistant +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
                 "Une fois cela fais, tu pourras te connecter à ton compte !\n\n" +
                 "Cdlt\n\n\n" +
                 "L'équipe de " + NAME_APPLICATION;
@@ -42,7 +42,7 @@ public class stringConstante {
                 " Avant toutes choses tu va devoir " +
                 "confirmer ton inscription" +
                 "en cliquant sur ce lien :\n\n\t" +
-                IpAdresseLocal +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
+                IpAdresseDistant +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
                 "Une fois cela fais, tu pourras te connecter à ton compte administrateur !\n\n" +
                 "Cdlt\n\n\n" +
                 "L'équipe de " + NAME_APPLICATION;
