@@ -82,4 +82,13 @@ public class QuestionsController {
 
 
     }
+
+    @PostMapping(value = "update",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void createQuestion(@RequestBody Questions questions) {
+        System.out.println(questions.getTexte());
+        System.out.println(questions.getBonneReponse().getId());
+
+    }
+
+
 }
