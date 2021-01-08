@@ -22,7 +22,7 @@ public class Reponses {
     // on peut lors de l'enregistre d'une question, save les
     // réponses prénsent dans l'objet question.
     @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
     @JsonIgnoreProperties("reponses")
     @JoinColumn( name = "Fk_IdQuestions" , referencedColumnName="IdQuestions")
     private Questions question;
