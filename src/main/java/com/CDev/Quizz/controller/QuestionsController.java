@@ -85,7 +85,7 @@ public class QuestionsController {
 
     @PutMapping(value = "update",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createQuestion(@RequestBody Questions questions) {
-        questionsRepository.saveAndFlush(questions);
+        questionsRepository.save(questions);
         reponsesRepository.saveAll(questions.getReponses());
     }
 
