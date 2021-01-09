@@ -91,6 +91,13 @@ public class QuestionsController {
         if(questions.getTexte().isBlank())
             throw new IllegalArgumentException(Constante.Message.MESSAGE_VALIDATOR_QUESTION_TEXTE);
 
+        for (Reponses reponse : questions.getReponses()) {
+            if (reponse.getTexte().isBlank())
+                throw new IllegalArgumentException(Constante.Message.MESSAGE_VALIDATOR_REPONSE_TEXTE);
+        }
+        // supprime les points d'interrogation s'il y en a et les espace blanc de fin et de début :
+        questions.setTexte(questions.getTexte().replaceAll("\\?", "").trim());
+
         questionsRepository.save(questions);
         reponsesRepository.saveAll(questions.getReponses());
     }
