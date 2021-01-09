@@ -6,8 +6,10 @@ import com.CDev.Quizz.entite.Reponses;
 import com.CDev.Quizz.repository.DifficultesRepository;
 import com.CDev.Quizz.repository.QuestionsRepository;
 import com.CDev.Quizz.repository.ReponsesRepository;
+import com.CDev.Quizz.utils.Constante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "questions")
@@ -82,4 +85,28 @@ public class QuestionsController {
 
 
     }
+
+    @PutMapping(value = "update",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updateQuestion(@RequestBody Questions questions) {
+        if(questions.getTexte().isBlank())
+            throw new IllegalArgumentException(Constante.Message.MESSAGE_VALIDATOR_QUESTION_TEXTE);
+
+        for (Reponses reponse : questions.getReponses()) {
+            if (reponse.getTexte().isBlank())
+                throw new IllegalArgumentException(Constante.Message.MESSAGE_VALIDATOR_REPONSE_TEXTE);
+        }
+        // supprime les points d'interrogation s'il y en a et les espace blanc de fin et de début :
+        questions.setTexte(questions.getTexte().replaceAll("\\?", "").trim());
+
+        questionsRepository.save(questions);
+        reponsesRepository.saveAll(questions.getReponses());
+    }
+
+
+    @DeleteMapping(value = "delete/{id}")
+    public void deleteQuestion(@PathVariable( value = "id") Integer id){
+        Optional<Questions> question = questionsRepository.findById(id);
+        questionsRepository.delete(question.get());
+    }
+
 }

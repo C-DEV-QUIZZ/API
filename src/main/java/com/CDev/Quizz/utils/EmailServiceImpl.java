@@ -19,11 +19,11 @@ public class EmailServiceImpl {
     public Boolean sendInscriptionMail(String to,String tokenEncrypt, String prenomUser, JavaMailSender javaMail) {
         System.out.println("Envoi mail inscription en cours...");
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(stringConstante.mailAdresseFrom);
+        message.setFrom(Constante.mailAdresseFrom);
         message.setTo(to);
         message.setSubject("Inscription QUIZZ MESI");
         message.setText(
-                stringConstante.getMessageInscription(prenomUser,tokenEncrypt)
+                Constante.getMessageInscription(prenomUser,tokenEncrypt)
         );
         javaMail.send(message);
         System.out.println("Email envoye!");
@@ -34,11 +34,11 @@ public class EmailServiceImpl {
                                              JavaMailSender javaMail) {
         System.out.println("Envoi mail inscription en cours...");
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(stringConstante.mailAdresseFrom);
+        message.setFrom(Constante.mailAdresseFrom);
         message.setTo(to);
         message.setSubject("Inscription QUIZZ MESI");
         message.setText(
-                stringConstante.getMessageInscriptionAdministrattion(prenomUser,tokenEncrypt)
+                Constante.getMessageInscriptionAdministrattion(prenomUser,tokenEncrypt)
         );
         javaMail.send(message);
         System.out.println("Email envoye!");
@@ -48,7 +48,7 @@ public class EmailServiceImpl {
     public Boolean sendSimpleMessage(String to, String subject, String text, JavaMailSender javaMail) {
         System.out.println("Envoi mail en cours...");
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(stringConstante.mailAdresseFrom);
+        message.setFrom(Constante.mailAdresseFrom);
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
@@ -63,7 +63,7 @@ public class EmailServiceImpl {
         MimeMessageHelper helper;
         helper = new MimeMessageHelper(message, true);//true indicates multipart message
 
-        helper.setFrom(stringConstante.mailAdresseFrom); // <--- THIS IS IMPORTANT
+        helper.setFrom(Constante.mailAdresseFrom); // <--- THIS IS IMPORTANT
 
         helper.setSubject(subject);
         helper.setTo(to);
