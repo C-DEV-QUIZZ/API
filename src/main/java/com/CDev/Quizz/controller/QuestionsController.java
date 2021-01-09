@@ -8,6 +8,7 @@ import com.CDev.Quizz.repository.QuestionsRepository;
 import com.CDev.Quizz.repository.ReponsesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "questions")
@@ -84,10 +86,16 @@ public class QuestionsController {
     }
 
     @PutMapping(value = "update",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createQuestion(@RequestBody Questions questions) {
+    public void updateQuestion(@RequestBody Questions questions) {
         questionsRepository.save(questions);
         reponsesRepository.saveAll(questions.getReponses());
     }
 
+
+    @DeleteMapping(value = "delete/{id}")
+    public void deleteQuestion(@PathVariable( value = "id") Integer id){
+        Optional<Questions> question = questionsRepository.findById(id);
+        questionsRepository.delete(question.get());
+    }
 
 }

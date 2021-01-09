@@ -37,7 +37,7 @@ public class Questions {
     // réponses prénsent dans l'objet question.
     @JsonManagedReference
     @JsonIgnoreProperties("question")
-    @OneToMany(mappedBy = "question",fetch = FetchType.EAGER,cascade = CascadeType.DETACH)
+    @OneToMany(mappedBy = "question",fetch = FetchType.EAGER,cascade = {CascadeType.DETACH,CascadeType.ALL})
     private List<Reponses> reponses;
 
     @OneToOne()
