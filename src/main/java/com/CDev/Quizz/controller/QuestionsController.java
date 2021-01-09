@@ -6,6 +6,7 @@ import com.CDev.Quizz.entite.Reponses;
 import com.CDev.Quizz.repository.DifficultesRepository;
 import com.CDev.Quizz.repository.QuestionsRepository;
 import com.CDev.Quizz.repository.ReponsesRepository;
+import com.CDev.Quizz.utils.Constante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
@@ -87,6 +88,9 @@ public class QuestionsController {
 
     @PutMapping(value = "update",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateQuestion(@RequestBody Questions questions) {
+        if(questions.getTexte().isBlank())
+            throw new IllegalArgumentException(Constante.Message.MESSAGE_VALIDATOR_QUESTION_TEXTE);
+
         questionsRepository.save(questions);
         reponsesRepository.saveAll(questions.getReponses());
     }

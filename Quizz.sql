@@ -1,5 +1,5 @@
 --
--- Fichier généré par SQLiteStudio v3.2.1 sur dim. déc. 27 20:09:28 2020
+-- Fichier généré par SQLiteStudio v3.2.1 sur sam. janv. 9 12:08:49 2021
 --
 -- Encodage texte utilisé : UTF-8
 --
@@ -21,7 +21,7 @@ CREATE TABLE Parametres (IdParametres INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
 INSERT INTO Parametres (IdParametres, NomSystemeParametres, ModeInscriptionParametres) VALUES (1, 'Site Admin', 1);
 
 -- Table : Questions
-CREATE TABLE Questions (IdQuestions INTEGER PRIMARY KEY AUTOINCREMENT, TexteQuestions VARCHAR UNIQUE NOT NULL, Fk_IdDifficultes INTEGER REFERENCES Difficultes (IdDifficultes) NOT NULL, PointsQuestions INTEGER NOT NULL, Fk_IdBonneReponses INTEGER REFERENCES Reponses (IdReponses) ON DELETE CASCADE NOT NULL);
+CREATE TABLE Questions (IdQuestions INTEGER PRIMARY KEY AUTOINCREMENT, TexteQuestions VARCHAR UNIQUE NOT NULL, Fk_IdDifficultes INTEGER REFERENCES Difficultes (IdDifficultes) NOT NULL, PointsQuestions INTEGER NOT NULL, Fk_IdBonneReponses INTEGER REFERENCES Reponses (IdReponses) ON DELETE CASCADE);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (1, 'Dans quel pays peut-on trouver la Catalogne, l’Andalousie et la Castille', 2, 8, 2);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (2, 'Qui a dit : « Le sort en est jeté » (Alea jacta est)', 2, 7, 6);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (3, 'Quel célèbre dictateur dirigea l’URSS du milieu des années 1920 à 1953', 2, 9, 12);
@@ -59,5 +59,3 @@ INSERT INTO Utilisateurs (IdUtilisateurs, NomUtilisateurs, PrenomUtilisateurs, E
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
-
-.save Quizz.db
