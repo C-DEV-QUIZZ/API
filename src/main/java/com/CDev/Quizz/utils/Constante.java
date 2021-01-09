@@ -1,6 +1,6 @@
 package com.CDev.Quizz.utils;
 
-public class stringConstante {
+public class Constante {
 
     // Ip local de l'adresse du site ( public et admin)
     public final static String IpAdresseLocal= "http://localhost:4200/";
@@ -48,5 +48,16 @@ public class stringConstante {
                 "L'équipe de " + NAME_APPLICATION;
 
     }
+    public static class Message{
+        public final static String MESSAGE_VALIDATOR_START= "Veuillez renseigner ";
+        public final static String MESSAGE_VALIDATOR_QUESTION_TEXTE= MESSAGE_VALIDATOR_START+"le texte de la question";
+        public final static String MESSAGE_VALIDATOR_QUESTION_POINT= MESSAGE_VALIDATOR_START+"le nombre de point de la question";
+        public final static String MESSAGE_VALIDATOR_QUESTION_BONNE_REPONSE= MESSAGE_VALIDATOR_START+"une bonne réponse";
+        public final static String MESSAGE_VALIDATOR_QUESTION_REPONSES= MESSAGE_VALIDATOR_START+"au minimum une réponse";
+        public final static String MESSAGE_VALIDATOR_QUESTION_DIFFICULTE= MESSAGE_VALIDATOR_START+"une difficulté";
 
+        public final static String MESSAGE_VALIDATOR_REPONSE_TEXTE= MESSAGE_VALIDATOR_START+"le texte de la réponse";
+        public final static String MESSAGE_VALIDATOR_REPONSE_QUESTION= MESSAGE_VALIDATOR_START+"la question auquel sont lié les réponses";
+
+    }
 }
