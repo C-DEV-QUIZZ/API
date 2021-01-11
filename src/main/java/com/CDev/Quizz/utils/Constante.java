@@ -1,15 +1,16 @@
 package com.CDev.Quizz.utils;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
+
 public class Constante {
 
-    // Ip local de l'adresse du site ( public et admin)
-    public final static String IpAdresseLocal= "http://localhost:4200/";
+    @Autowired
+    private static Environment env;
 
     // adresse du site public quizz pour la confirmation d'adresse:
-    public final static String IpAdresseDistant="https://siteadminquizz.servehttp.com/";
-
-    // adresse du site administration pour la confirmation paar mail:
-    public final static String IpAdresseDistantAdministration="https://siteadminquizz.servehttp.com/";
+    public static String IpAdresseSiteAdmin;
 
     // serveur mail:
     public final static String mailAdresseFrom="quizz-mesi@outlook.fr";
@@ -21,13 +22,15 @@ public class Constante {
     public final static String NAME_APPLICATION= "QUIZZ MESI";
 
 
+
+
     public static String getMessageInscription(String prenomUser,String tokenEncrypt ) {
 
         return  "Bonjour et Bienvenue " + prenomUser +" ! \n\n" +
                 "Nous te souhaitons la bienvenue sur "+ NAME_APPLICATION +"\n\n" +
                 "Nous espérons que tu t'amuseras comme il se doit. Avant toutes choses tu va devoir confirmer ton inscription" +
                 "en cliquant sur ce lien :\n\n\t" +
-                IpAdresseDistant +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
+                IpAdresseSiteAdmin +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
                 "Une fois cela fais, tu pourras te connecter à ton compte !\n\n" +
                 "Cdlt\n\n\n" +
                 "L'équipe de " + NAME_APPLICATION;
@@ -42,7 +45,7 @@ public class Constante {
                 " Avant toutes choses tu va devoir " +
                 "confirmer ton inscription" +
                 "en cliquant sur ce lien :\n\n\t" +
-                IpAdresseDistant +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
+                IpAdresseSiteAdmin +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
                 "Une fois cela fais, tu pourras te connecter à ton compte administrateur !\n\n" +
                 "Cdlt\n\n\n" +
                 "L'équipe de " + NAME_APPLICATION;
