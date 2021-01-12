@@ -6,6 +6,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,7 +16,7 @@ public class InfosController {
     @Autowired
     Environment environment;
 
-    @GetMapping(value = "typeBuild",produces = MediaType.APPLICATION_PROBLEM_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/typeBuild",produces = MediaType.APPLICATION_JSON_VALUE)
     public Message getInfos(){
 
 //        String infos = String.format("Vous êtes dans un environnement de type : %s\n" +
