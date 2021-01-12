@@ -16,10 +16,10 @@ public class InfosController {
     Environment environment;
 
     @GetMapping(value = "typeBuild",produces = MediaType.TEXT_PLAIN_VALUE)
-    public void getInfos(){
+    public String getInfos(){
 
 //        String infos = String.format("Vous êtes dans un environnement de type : %s\n" +
 ////                "L'adresse du site admin est : %s",environment.getProperty("type.environnement"),Constante.IpAdresseSiteAdmin);//
-//        return infos;
+        return "recu";
     }
 }
