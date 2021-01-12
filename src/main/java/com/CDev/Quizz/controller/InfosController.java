@@ -15,11 +15,27 @@ public class InfosController {
     @Autowired
     Environment environment;
 
-    @GetMapping(value = "typeBuild",produces = MediaType.TEXT_PLAIN_VALUE)
-    public String getInfos(){
+    @GetMapping(value = "typeBuild",produces = MediaType.APPLICATION_PROBLEM_JSON_VALUE)
+    public Message getInfos(){
 
 //        String infos = String.format("Vous êtes dans un environnement de type : %s\n" +
 ////                "L'adresse du site admin est : %s",environment.getProperty("type.environnement"),Constante.IpAdresseSiteAdmin);//
-        return "recu";
+        return new Message("Bienvenue");
+    }
+
+    public class Message{
+        private String texte;
+
+        public Message(String texte) {
+            this.texte = texte;
+        }
+
+        public String getTexte() {
+            return texte;
+        }
+
+        public void setTexte(String texte) {
+            this.texte = texte;
+        }
     }
 }
