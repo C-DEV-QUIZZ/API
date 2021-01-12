@@ -15,11 +15,12 @@ public class InfosController {
     @Autowired
     Environment environment;
 
-    @GetMapping(value = "typeBuild",produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(value = "build",produces = MediaType.TEXT_PLAIN_VALUE)
     public String getInfos(){
 
         String infos = String.format("Vous êtes dans un environnement de type : %s\n" +
-                "L'adresse du site admin est : %s",environment.getProperty("type.environnement"),Constante.IpAdresseSiteAdmin);
+                "L'adresse du site admin est : %s\n" +
+                "Version: %s",environment.getProperty("type.environnement"),Constante.IpAdresseSiteAdmin,environment.getProperty("info.app.version"));
         return infos;
     }
 }
