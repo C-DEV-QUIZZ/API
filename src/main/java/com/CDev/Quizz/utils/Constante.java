@@ -28,7 +28,7 @@ public class Constante {
 
         return  "Bonjour et Bienvenue " + prenomUser +" ! \n\n" +
                 "Nous te souhaitons la bienvenue sur "+ NAME_APPLICATION +"\n\n" +
-                "Nous espérons que tu t'amuseras comme il se doit. Avant toutes choses tu va devoir confirmer ton inscription" +
+                "Nous espérons que tu t'amuseras comme il se doit. Avant toutes choses tu va devoir confirmer ton inscription " +
                 "en cliquant sur ce lien :\n\n\t" +
                 IpAdresseSiteAdmin +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
                 "Une fois cela fais, tu pourras te connecter à ton compte !\n\n" +
@@ -41,9 +41,9 @@ public class Constante {
 
         return  "Bonjour et Bienvenue " + prenomUser +" ! \n\n" +
                 "Nous te souhaitons la bienvenue en tant que administrateur sur "+ NAME_APPLICATION +"\n\n" +
-                "Nous espérons que tu supportera la pression d'un rôle comme le tiens !!" +
+                "Nous espérons que tu supporteras la pression d'un rôle comme le tiens !!" +
                 " Avant toutes choses tu va devoir " +
-                "confirmer ton inscription" +
+                "confirmer ton inscription " +
                 "en cliquant sur ce lien :\n\n\t" +
                 IpAdresseSiteAdmin +"confirmationInscription?"+TOKEN_KEY+"="+ tokenEncrypt +"\n\n\n" +
                 "Une fois cela fais, tu pourras te connecter à ton compte administrateur !\n\n" +
