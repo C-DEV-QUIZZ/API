@@ -21,7 +21,7 @@ public class ParametresController {
     ParametresRepository parametresRepository;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE,value = "/InscriptionSiteAdmin")
-    public Boolean getModeInscriptionSiteAdmin(){
+    public Boolean isModeInscriptionActiveSiteAdmin(){
 
         Parametres parametre =  parametresRepository.getOne(1);
 
@@ -31,4 +31,9 @@ public class ParametresController {
         return parametre.getModeInscription();
     }
 
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE,value = "/getall")
+    public List<Parametres> getAllParametres(){
+        return parametresRepository.findAll();
+    }
 }
