@@ -1,5 +1,5 @@
 --
--- Fichier généré par SQLiteStudio v3.2.1 sur sam. janv. 9 12:08:49 2021
+-- Fichier généré par SQLiteStudio v3.2.1 sur mer. janv. 13 11:59:45 2021
 --
 -- Encodage texte utilisé : UTF-8
 --
@@ -9,6 +9,8 @@ BEGIN TRANSACTION;
 -- Table : Administrateurs
 CREATE TABLE Administrateurs (IdAdministrateurs INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NomAdministrateurs VARCHAR NOT NULL, PrenomAdministrateurs VARCHAR NOT NULL, EmailAdministrateurs VARCHAR NOT NULL, PseudoAdministrateurs VARCHAR, PasswordAdministrateurs VARCHAR NOT NULL, TokenAdministrateurs VARCHAR NOT NULL, InscriptionConfirmAdministrateurs BOOLEAN);
 INSERT INTO Administrateurs (IdAdministrateurs, NomAdministrateurs, PrenomAdministrateurs, EmailAdministrateurs, PseudoAdministrateurs, PasswordAdministrateurs, TokenAdministrateurs, InscriptionConfirmAdministrateurs) VALUES (1, 'ferrere', 'fabrice', 'bafdu69@hotmail.fr', NULL, '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'OOBWRFEN2V6B1608334797545RIZXGFAT389U', 1);
+INSERT INTO Administrateurs (IdAdministrateurs, NomAdministrateurs, PrenomAdministrateurs, EmailAdministrateurs, PseudoAdministrateurs, PasswordAdministrateurs, TokenAdministrateurs, InscriptionConfirmAdministrateurs) VALUES (2, 'tt', 'tt', 'ferrerefarbice@gmail.com', NULL, '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'QT10RTTDP3TQ16104099178163I9Z2TTS8S7J', NULL);
+INSERT INTO Administrateurs (IdAdministrateurs, NomAdministrateurs, PrenomAdministrateurs, EmailAdministrateurs, PseudoAdministrateurs, PasswordAdministrateurs, TokenAdministrateurs, InscriptionConfirmAdministrateurs) VALUES (3, 'tt', 'tt', 'ferrerefabrice@gmail.com', NULL, '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'BYU7WTT3FJM11610409960357ZR45LTT5ASG8', 1);
 
 -- Table : Difficultes
 CREATE TABLE Difficultes (IdDifficultes INTEGER PRIMARY KEY AUTOINCREMENT, NomDifficultes VARCHAR NOT NULL);
@@ -18,15 +20,14 @@ INSERT INTO Difficultes (IdDifficultes, NomDifficultes) VALUES (3, 'Expert');
 
 -- Table : Parametres
 CREATE TABLE Parametres (IdParametres INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NomSystemeParametres VARCHAR UNIQUE NOT NULL, ModeInscriptionParametres BOOLEAN NOT NULL);
-INSERT INTO Parametres (IdParametres, NomSystemeParametres, ModeInscriptionParametres) VALUES (1, 'Site Admin', 1);
+INSERT INTO Parametres (IdParametres, NomSystemeParametres, ModeInscriptionParametres) VALUES (1, 'Site administration', 1);
 
 -- Table : Questions
 CREATE TABLE Questions (IdQuestions INTEGER PRIMARY KEY AUTOINCREMENT, TexteQuestions VARCHAR UNIQUE NOT NULL, Fk_IdDifficultes INTEGER REFERENCES Difficultes (IdDifficultes) NOT NULL, PointsQuestions INTEGER NOT NULL, Fk_IdBonneReponses INTEGER REFERENCES Reponses (IdReponses) ON DELETE CASCADE);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (1, 'Dans quel pays peut-on trouver la Catalogne, l’Andalousie et la Castille', 2, 8, 2);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (2, 'Qui a dit : « Le sort en est jeté » (Alea jacta est)', 2, 7, 6);
 INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (3, 'Quel célèbre dictateur dirigea l’URSS du milieu des années 1920 à 1953', 2, 9, 12);
-INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (4, 'Quelle ville a construit le premier métro', 3, 12, 15);
-INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (5, 'De quoi se nourrit le manchot', 1, 2, 17);
+INSERT INTO Questions (IdQuestions, TexteQuestions, Fk_IdDifficultes, PointsQuestions, Fk_IdBonneReponses) VALUES (4, 'Quelle ville a construit le premier métro', 1, 12, 15);
 
 -- Table : Reponses
 CREATE TABLE Reponses (IdReponses INTEGER PRIMARY KEY AUTOINCREMENT, TexteReponses VARCHAR NOT NULL, Fk_IdQuestions INTEGER REFERENCES Questions (IdQuestions) ON DELETE CASCADE);
@@ -46,9 +47,6 @@ INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (12, 'St
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (13, 'Lénine', 3);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (14, 'Pékin', 3);
 INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (15, 'Londres', 4);
-INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (16, 'De crevette', 5);
-INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (17, 'De plancton', 5);
-INSERT INTO Reponses (IdReponses, TexteReponses, Fk_IdQuestions) VALUES (18, 'De sardine', 5);
 
 -- Table : Utilisateurs
 CREATE TABLE Utilisateurs (IdUtilisateurs INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NomUtilisateurs VARCHAR NOT NULL, PrenomUtilisateurs VARCHAR NOT NULL, EmailUtilisateurs VARCHAR NOT NULL, PseudoUtilisateurs VARCHAR, PasswordUtilisateurs VARCHAR NOT NULL, TokenUtilisateurs VARCHAR, InscriptionConfirmUtilisateurs BOOLEAN);
