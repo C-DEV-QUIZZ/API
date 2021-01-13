@@ -3,7 +3,6 @@ package com.CDev.Quizz.utils;
 import com.CDev.Quizz.entite.Administrateurs;
 import com.CDev.Quizz.entite.Utilisateurs;
 
-import java.util.Date;
 import java.util.Random;
 
 public  class MethodsTools {
