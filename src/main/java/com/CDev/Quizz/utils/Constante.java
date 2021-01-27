@@ -13,10 +13,10 @@ public class Constante {
     public static String IpAdresseSiteAdmin;
 
     // serveur mail:
-    public final static String mailAdresseFrom="quizz-mesi@outlook.fr";
+    public static String mailAdresseFrom;
 
     // nom de la clé token stocké dans les cookies:
-    public final static String TOKEN_KEY="Zz3Qu177";
+    public static String TOKEN_KEY;
 
     // nom de l'application
     public final static String NAME_APPLICATION= "QUIZZ MESI";
