@@ -1,0 +1,5 @@
+-- afin d'éviter de push les propriete de connexion faire : --
+
+  git update-index --assume-unchanged "chemin/vers/le/fichier/application.properties"
+
+git n'observera plus les changements sur ce fichier

@@ -2,8 +2,9 @@ package com.CDev.Quizz.utils;
 
 import com.CDev.Quizz.entite.Administrateurs;
 import com.CDev.Quizz.entite.Utilisateurs;
+import com.CDev.Quizz.security.Encrypte;
+import org.hibernate.query.criteria.internal.predicate.BooleanExpressionPredicate;
 
-import java.util.Date;
 import java.util.Random;
 
 public  class MethodsTools {
@@ -38,6 +39,14 @@ public  class MethodsTools {
         }
 
         return sb.toString();
+    }
+
+
+    public static void isPropertiesOk() throws Exception {
+        if (Constante.IpAdresseSiteAdmin.isBlank() || Constante.TOKEN_KEY.isBlank() || Encrypte.secret.isBlank() || Constante.mailAdresseFrom.isBlank())
+        {
+            throw new Exception("Les propriétés ne sont pas renseignés dans application propreties.");
+        }
     }
 }
 

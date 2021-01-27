@@ -55,6 +55,11 @@ public class GlobalExceptionHandler {
     public String handleIllegalStateException( HttpMediaTypeNotSupportedException e){
         return e.getMessage();
     }
+    @ExceptionHandler(IllegalAccessError.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public String handleIllegalStateException( IllegalAccessError e){
+        return e.getMessage();
+    }
 
 
 

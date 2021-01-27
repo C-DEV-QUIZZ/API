@@ -13,7 +13,15 @@ public class Parametres {
     private Integer id;
 
     @Column(name = "NomSystemeParametres")
-    private String nomSystème;
+    private String nomSysteme;
+
+    public String getNomSysteme() {
+        return nomSysteme;
+    }
+
+    public void setNomSysteme(String nomSysteme) {
+        this.nomSysteme = nomSysteme;
+    }
 
     @Column(name = "ModeInscriptionParametres")
     private Boolean modeInscription;
@@ -25,14 +33,6 @@ public class Parametres {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNomSystème() {
-        return nomSystème;
-    }
-
-    public void setNomSystème(String nomSystème) {
-        this.nomSystème = nomSystème;
     }
 
     public Boolean getModeInscription() {
