@@ -1,2 +1,0 @@
-.open 'Chemin _vers _ base _ de _ donnée'
-.read 'Chemin _ du _ script _ a _appliquer'

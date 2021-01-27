@@ -13,7 +13,7 @@ public class Encrypte {
 
     private static SecretKeySpec secretKey;
     private static byte[] key;
-    private static String secret = "!CleSecrete!";
+    public static String secret;
     public static void setKey(String myKey)
     {
         MessageDigest sha = null;
