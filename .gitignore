@@ -34,3 +34,6 @@ build/
 
 ### BDD ###
 Quizz.db
+
+#ignore properties
+application.properties
