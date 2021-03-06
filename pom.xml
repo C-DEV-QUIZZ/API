@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.C-Dev</groupId>
 	<artifactId>Quizz</artifactId>
-	<version>1.3.5</version>
+	<version>1.4.1</version>
 	<name>Quizz</name>
 	<packaging>war</packaging>
 	<description>Demo project for Spring Boot</description>
