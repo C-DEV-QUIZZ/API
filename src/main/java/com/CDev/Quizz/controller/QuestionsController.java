@@ -37,10 +37,6 @@ public class QuestionsController {
     public List<Questions> getAllQuestions(HttpServletRequest request){
         // TODO implementer un système de vérification pour voir si
         // le demandeur est bien un administrateur
-//        System.out.println(request.getRemoteUser());
-//        System.out.println(request.getRemoteAddr());
-//        System.out.println(request.getRemoteHost());
-//        System.out.println(request.getRemotePort());
         return questionsRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
@@ -81,9 +77,6 @@ public class QuestionsController {
         // save la question et son ensemble ( réponse / bonneréponse )
         // voir entite et les relations.
         questionsRepository.save(questions);
-
-
-
     }
 
     @PutMapping(value = "update",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -107,6 +100,13 @@ public class QuestionsController {
     public void deleteQuestion(@PathVariable( value = "id") Integer id){
         Optional<Questions> question = questionsRepository.findById(id);
         questionsRepository.delete(question.get());
+    }
+
+
+    @GetMapping(value = "modesolo", produces = MediaType.APPLICATION_JSON_VALUE)
+    private List<Questions> getQuestionsForSoloMode(){
+
+         return questionsRepository.getQuestionsForModeSolo();
     }
 
 }
