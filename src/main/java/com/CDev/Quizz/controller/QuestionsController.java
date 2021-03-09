@@ -8,6 +8,7 @@ import com.CDev.Quizz.repository.QuestionsRepository;
 import com.CDev.Quizz.repository.ReponsesRepository;
 import com.CDev.Quizz.utils.Constante;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
@@ -16,9 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "questions")
@@ -109,4 +108,14 @@ public class QuestionsController {
          return questionsRepository.getQuestionsForModeSolo();
     }
 
+
+    @PostMapping(value="QuestionResult" ,produces = MediaType.APPLICATION_JSON_VALUE,consumes =
+            MediaType.APPLICATION_JSON_VALUE)
+        private List<Questions> getResultForSolo(@RequestBody Integer[] idQuestions){
+            for (Integer e: idQuestions) {
+                System.out.println(e);
+            }
+            List<Integer> IdQuestionList = Arrays.asList(idQuestions);
+            return questionsRepository.findAllById(IdQuestionList);
+        }
 }
