@@ -9,13 +9,10 @@ import com.CDev.Quizz.repository.ReponsesRepository;
 import com.CDev.Quizz.utils.Constante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,7 +41,7 @@ public class QuestionsController {
         return questionsRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
-
+    @CrossOrigin
     @PostMapping(value = "create",produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void createQuestion(@RequestParam("question") String question,
                                @RequestParam("difficulte") Integer difficulte,
@@ -86,6 +83,7 @@ public class QuestionsController {
 
     }
 
+    @CrossOrigin
     @PutMapping(value = "update",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateQuestion(@RequestBody Questions questions) {
         if(questions.getTexte().isBlank())
@@ -102,7 +100,7 @@ public class QuestionsController {
         reponsesRepository.saveAll(questions.getReponses());
     }
 
-
+    @CrossOrigin
     @DeleteMapping(value = "delete/{id}")
     public void deleteQuestion(@PathVariable( value = "id") Integer id){
         Optional<Questions> question = questionsRepository.findById(id);
