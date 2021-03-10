@@ -112,9 +112,6 @@ public class QuestionsController {
     @PostMapping(value="QuestionResult" ,produces = MediaType.APPLICATION_JSON_VALUE,consumes =
             MediaType.APPLICATION_JSON_VALUE)
         private List<Questions> getResultForSolo(@RequestBody Integer[] idQuestions){
-            for (Integer e: idQuestions) {
-                System.out.println(e);
-            }
             List<Integer> IdQuestionList = Arrays.asList(idQuestions);
             return questionsRepository.findAllById(IdQuestionList);
         }
