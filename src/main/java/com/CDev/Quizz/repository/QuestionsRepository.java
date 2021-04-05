@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface QuestionsRepository extends JpaRepository<Questions,Integer> {
 
-    @Query(value = "SELECT distinct * FROM Questions ORDER BY RANDOM() LIMIT 2",nativeQuery = true)
+    @Query(value = "SELECT distinct * FROM Questions ORDER BY RANDOM() LIMIT 10",nativeQuery = true)
     List<Questions> getQuestionsForModeSolo();
 }
