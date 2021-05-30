@@ -10,14 +10,19 @@ import com.CDev.Quizz.utils.Constante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping(value = "questions")
@@ -38,7 +43,6 @@ public class QuestionsController {
         // le demandeur est bien un administrateur
         return questionsRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
-
 
     @PostMapping(value = "create",produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public void createQuestion(@RequestParam("question") String question,
@@ -93,7 +97,6 @@ public class QuestionsController {
         questionsRepository.save(questions);
         reponsesRepository.saveAll(questions.getReponses());
     }
-
 
     @DeleteMapping(value = "delete/{id}")
     public void deleteQuestion(@PathVariable( value = "id") Integer id){
