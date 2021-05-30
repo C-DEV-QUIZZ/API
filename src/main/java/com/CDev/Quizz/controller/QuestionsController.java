@@ -8,14 +8,21 @@ import com.CDev.Quizz.repository.QuestionsRepository;
 import com.CDev.Quizz.repository.ReponsesRepository;
 import com.CDev.Quizz.utils.Constante;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
+import java.util.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping(value = "questions")
@@ -34,10 +41,6 @@ public class QuestionsController {
     public List<Questions> getAllQuestions(HttpServletRequest request){
         // TODO implementer un système de vérification pour voir si
         // le demandeur est bien un administrateur
-//        System.out.println(request.getRemoteUser());
-//        System.out.println(request.getRemoteAddr());
-//        System.out.println(request.getRemoteHost());
-//        System.out.println(request.getRemotePort());
         return questionsRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
@@ -77,9 +80,6 @@ public class QuestionsController {
         // save la question et son ensemble ( réponse / bonneréponse )
         // voir entite et les relations.
         questionsRepository.save(questions);
-
-
-
     }
 
     @PutMapping(value = "update",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -104,4 +104,18 @@ public class QuestionsController {
         questionsRepository.delete(question.get());
     }
 
+
+    @GetMapping(value = "modesolo", produces = MediaType.APPLICATION_JSON_VALUE)
+    private List<Questions> getQuestionsForSoloMode(){
+
+         return questionsRepository.getQuestionsForModeSolo();
+    }
+
+
+    @PostMapping(value="QuestionResult" ,produces = MediaType.APPLICATION_JSON_VALUE,consumes =
+            MediaType.APPLICATION_JSON_VALUE)
+        private List<Questions> getResultForSolo(@RequestBody Integer[] idQuestions){
+            List<Integer> IdQuestionList = Arrays.asList(idQuestions);
+            return questionsRepository.findAllById(IdQuestionList);
+        }
 }
