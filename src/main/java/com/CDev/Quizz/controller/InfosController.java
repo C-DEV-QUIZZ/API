@@ -1,6 +1,7 @@
 package com.CDev.Quizz.controller;
 
 import com.CDev.Quizz.utils.Constante;
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
@@ -22,5 +23,10 @@ public class InfosController {
                 "L'adresse du site admin est : %s\n" +
                 "Version: %s",environment.getProperty("type.environnement"),Constante.IpAdresseSiteAdmin,environment.getProperty("info.app.version"));
         return infos;
+    }
+    @GetMapping(value = "ping",produces = MediaType.TEXT_PLAIN_VALUE)
+    public String getPing(){
+
+        return "Ping ok";
     }
 }
