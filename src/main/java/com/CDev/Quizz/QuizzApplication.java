@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
 public class QuizzApplication extends SpringBootServletInitializer {
@@ -37,5 +38,11 @@ public class QuizzApplication extends SpringBootServletInitializer {
 
 	@Value("${spring.mail.username}")
 	public void setMailAdresseFrom(String mailAdresseFrom) { Constante.mailAdresseFrom = mailAdresseFrom;
+	}
+	@Value("${NbQuestionSolo}")
+	public void setNbQuestionModeSolo(String nbQuestionModeSolo) { Constante.nbQuestionModeSolo = nbQuestionModeSolo;
+	}
+	@Value("${NbQuestionMulti}")
+	public void setNbQuestionMulti(String NbQuestionMulti) { Constante.NbQuestionMulti = NbQuestionMulti;
 	}
 }

@@ -107,8 +107,12 @@ public class QuestionsController {
 
     @GetMapping(value = "modesolo", produces = MediaType.APPLICATION_JSON_VALUE)
     private List<Questions> getQuestionsForSoloMode(){
+         return questionsRepository.getQuestionsForModeSolo(Constante.nbQuestionModeSolo);
+    }
 
-         return questionsRepository.getQuestionsForModeSolo();
+    @GetMapping(value = "modeMulti", produces = MediaType.APPLICATION_JSON_VALUE)
+    private List<Questions> getQuestionsForMultiMode(){
+         return questionsRepository.getQuestionsForModeMulti(Constante.nbQuestionModeSolo);
     }
 
 
