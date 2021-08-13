@@ -26,7 +26,7 @@ public class QuestionsRepositoryTest {
         //given
 
         //when
-            List<Questions> questionsList = questionsRepository.getQuestionsForModeSolo();
+            List<Questions> questionsList = questionsRepository.getQuestionsForModeSolo("2");
         //then
             Assertions.assertThat(questionsList.size()).isEqualTo(2);
 
@@ -36,7 +36,7 @@ public class QuestionsRepositoryTest {
     public void TestIntegrationGetQuestionsForModeSoloIsResultUnique(){
 
         //given
-            List<Questions> questionsList = questionsRepository.getQuestionsForModeSolo();
+            List<Questions> questionsList = questionsRepository.getQuestionsForModeSolo("3");
         //when
             Questions questionsA = questionsList.get(0);
             Questions questionsB = questionsList.get(1);

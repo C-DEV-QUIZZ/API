@@ -49,6 +49,7 @@ public class QuestionsController {
                                @RequestParam("difficulte") Integer difficulte,
                                @RequestParam("points") Integer points,
                                @RequestParam("bonneReponse") Integer bonneReponse,
+                               @RequestParam("isMulti") boolean isMulti,
                                @RequestParam("reponses") String[] reponsesArray){
 
         // creer la nouvelle question a save
@@ -63,7 +64,7 @@ public class QuestionsController {
         for (String Str_reponse: reponsesArray) {
 
             Reponses reponse= new Reponses();   // creer un objet reponse
-            reponse.setTexte(Str_reponse);      // set le texte de l'objet reponse
+            reponse.setTexte(Str_reponse.trim());      // set le texte de l'objet reponse
             // Ajoute la question a la reponse pour obtenir l'id
             // de la question a laquel la réponse est lié :
             reponse.setQuestion(questions);
@@ -73,8 +74,9 @@ public class QuestionsController {
         questions.setDifficultes(difficultes);
         questions.setBonneReponse(reponsesList.get(bonneReponse));
         questions.setPoints(points);
-        questions.setTexte(question);                       // set le texte de la question
+        questions.setTexte(question.trim());                       // set le texte de la question
         questions.setReponses(reponsesList);                // Ajoute toutes les réponses a la question
+        questions.setIsMultiplayer(isMulti);
      // Ajoute la bonne réponse a la question
 
         // save la question et son ensemble ( réponse / bonneréponse )
@@ -107,8 +109,12 @@ public class QuestionsController {
 
     @GetMapping(value = "modesolo", produces = MediaType.APPLICATION_JSON_VALUE)
     private List<Questions> getQuestionsForSoloMode(){
+         return questionsRepository.getQuestionsForModeSolo(Constante.nbQuestionModeSolo);
+    }
 
-         return questionsRepository.getQuestionsForModeSolo();
+    @GetMapping(value = "modeMulti", produces = MediaType.APPLICATION_JSON_VALUE)
+    private List<Questions> getQuestionsForMultiMode(){
+         return questionsRepository.getQuestionsForModeMulti(Constante.nbQuestionModeSolo);
     }
 
 

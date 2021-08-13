@@ -3,11 +3,15 @@ package com.CDev.Quizz.utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.Scheduled;
 
 public class Constante {
 
     @Autowired
     private static Environment env;
+    public static String nbQuestionModeSolo;
+
+    public static String NbQuestionMulti;
 
     // adresse du site public quizz pour la confirmation d'adresse:
     public static String IpAdresseSiteAdmin;
@@ -20,8 +24,6 @@ public class Constante {
 
     // nom de l'application
     public final static String NAME_APPLICATION= "QUIZZ MESI";
-
-
 
 
     public static String getMessageInscription(String prenomUser,String tokenEncrypt ) {
