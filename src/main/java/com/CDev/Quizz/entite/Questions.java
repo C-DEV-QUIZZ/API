@@ -44,6 +44,16 @@ public class Questions {
     @JoinColumn(name = "Fk_IdDifficultes")
     private Difficultes difficultes;
 
+    @Column(name = "IsMultiQuestions")
+    private boolean isMultiplayer;
+
+    public boolean isMultiplayer() {
+        return isMultiplayer;
+    }
+
+    public void setIsMultiplayer(boolean multiplayer) {
+        isMultiplayer = multiplayer;
+    }
 
     public Difficultes getDifficultes() {
         return difficultes;
@@ -92,4 +102,6 @@ public class Questions {
     public void setReponses(List<Reponses> reponses) {
         this.reponses = reponses;
     }
+
+
 }
