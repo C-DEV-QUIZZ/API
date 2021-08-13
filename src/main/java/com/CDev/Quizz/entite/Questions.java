@@ -47,6 +47,14 @@ public class Questions {
     @Column(name = "IsMultiQuestions")
     private boolean isMultiplayer;
 
+    public boolean isMultiplayer() {
+        return isMultiplayer;
+    }
+
+    public void setIsMultiplayer(boolean multiplayer) {
+        isMultiplayer = multiplayer;
+    }
+
     public Difficultes getDifficultes() {
         return difficultes;
     }
