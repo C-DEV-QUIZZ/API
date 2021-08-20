@@ -12,3 +12,6 @@
 - Fin de l'ajout de l'entité utilisateurs et création de son controller.  
 - PR + merge dans develop et build , puis merge dans la branch master.  
 - Mise en production de version alpha https://quizz.servehttp.com/ avec la possiblité de récupérer des utilisateurs simple pour le back.
+
+20/08/21:
+Maj deploiement avant presentation
